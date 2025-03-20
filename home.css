@@ -108,6 +108,6 @@ nav .nav-links li a {
 .image {
     width: 70%;
     height: 100%;
-    background-image: url('file:///D:/WS%20Code/WS%20Images/HomePage%20Image.jpg');
+    background-image: url('images/HomePage Image.jpg');
     background-size: cover;
 }
