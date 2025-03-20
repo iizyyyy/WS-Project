@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Racing Sans One' rel='stylesheet'>
+    <title>Shop Page | Build-A-PC</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+            }
+
+            body {
+                max-height: 100vh;
+                background: black;
+            }
+
+            h1 {
+                font-family: 'Racing Sans One';
+                font-size: 40px !important; 
+                color: white; 
+                text-align: center;
+                margin-top: -20px;
+                margin-right: 55px;
+                filter: invert(100%);
+                -webkit-text-stroke: 1px rgb(0, 0, 0);
+            }
+
+            h2 {
+                text-align: start;
+                margin-top: -30px;
+                margin-left: 5%;
+            }
+
+            header {
+                background-color: rgb(0, 0, 0);
+                padding: 7px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .logo img {
+                width: 90px;
+                height: 90px;
+                margin-left: 85px;
+                border-radius: 100%;
+            }
+
+            nav {
+                display: flex;
+                font-size: 15px;
+                align-items: stretch;
+            }
+
+            .nav-links {
+                list-style: none;
+                display: flex;
+                align-items: center;
+                justify-content: end;
+                gap: 20px;
+                position: absolute;
+                right: 2%;
+                top: 10%;
+            }
+
+            .nav-links a {
+                color: white;
+                text-decoration: none;
+                font-size: 12px;
+            }
+
+            .nav-links a:hover {
+                text-decoration: underline;
+            }
+
+            nav .nav-links li a {
+                font-size: 20px !important;
+            }
+
+            .cart-icon {
+                width: 20px;
+                height: 20px;
+                filter: invert(1);
+            }
+
+            .hero {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                height: 40vh;
+            }
+
+            .text {
+                font-size: 30px;
+                font-weight: bold;
+                text-transform: uppercase;
+                width: 40%;
+                padding-left: 50px;
+            }
+
+            .cta {
+                font-size: 24px;
+                margin-top: 10px;
+                text-align: center;
+                margin-right: 55px;
+            }
+
+            .cta span {
+                color: cyan;
+                font-family: 'Racing Sans One'
+            }
+
+            .cta .highlight {
+                color: red;
+                font-weight: bold;
+            }
+
+            .image {
+                width: 955px;
+                height: 220px;
+                background-image: url('file:///D:/WS%20Code/WS%20Images/HomePage%20Image.jpg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: 100%;
+            }
+
+            section.categories {
+                padding: 30px 5%;
+                background-color: #efefef;
+            }
+
+            .category-container {
+                display: flex;
+                justify-content: space-evenly;
+                flex-wrap: wrap;
+            }
+
+            .category {
+                text-align: center;
+                margin: 10px;
+                border-radius: 10%;
+                background-color: white;
+            }
+
+            .category img {
+                width: 150px;
+                height: 150px;
+                border-radius: 10px;
+            }
+
+            .category p {
+                margin-top: 10px;
+                font-weight: bold;
+            }
+
+        </style>
+    </head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="SignUp.html"><img src="file:///D:/WS%20Code/WS%20Images/Logo.jpg" alt="Build-A-PC Logo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="ShopPage.html">Shop</a></li>
+                <li><a href="AboutUs.html">About</a></li>
+                <li><a href="ContactUs.html">Contact</a></li>
+                <a href="CartPage.htmls"><img src="file:///D:/WS%20Code/WS%20Images/Cart Icon.png" alt="Cart" class="cart-icon"></a>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="text">
+            <h1>TAKE YOUR<br>PC TO THE<br>NEXT LEVEL!</h1>
+            <p class="cta"><span>Shop</span> <span class="highlight">Now!</span></p>
+        </div>
+        <div class="image"></div>
+    </section>
+
+        <section class="categories">
+            <h2>Browse By Category</h2>
+                <div class="category-container">
+
+                    <div class="category">
+                        <a href="TowerPC.html"><img src="D:\WS Code\WS Images\Desktop Category.png" alt="Desktops"></a>
+                        <p>Desktops</p>
+                    </div>
+
+                    <div class="category">
+                        <a href="ChairsPage.html"><img src="D:\WS Code\WS Images\PC Furnitures Category.png" alt="PC Furnitures"></a>
+                        <p>PC Furnitures</p>
+                    </div>
+
+                    <div class="category">
+                        <a href="GamingPage.html"><img src="D:\WS Code\WS Images\Gaming Category.png" alt="Gaming"></a>
+                        <p>Gaming</p>
+                    </div>
+
+                    <div class="category">
+                        <a href="ModemRouters.html"><img src="D:\WS Code\WS Images\Network Devices Category.png" alt="Network Devices"></a>
+                        <p>Network Devices</p>
+                    </div>
+
+                    <div class="category">
+                        <a href="HeadsetPage.html"><img src="D:\WS Code\WS Images\Peripherals Category.png" alt="Peripherals"></a>
+                        <p>Peripherals</p>
+                    </div>
+
+                    <div class="category">
+                        <a href="DeskJetPage.html"><img src="D:\WS Code\WS Images\Printers and Scanners Category.png" alt="Printers & Scanner"></a>
+                        <p>Printers & Scanner</p>
+                    </div>
+                </div>
+        </section>
+    </body>
+</html>

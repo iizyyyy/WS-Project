@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Racing Sans One' rel='stylesheet'>
+    <link href="styles.css" rel="stylesheet">
+    <title>Contact Page | Build-A-PC</title>
+    </head>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="SignUp.html"><img src="file:///D:/WS%20Code/WS%20Images/Logo.jpg" alt="Build-A-PC Logo"></a>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="ShopPage.html">Shop</a></li>
+                <li><a href="AboutUs.html">About</a></li>
+                <li><a href="ContactUs.html">Contact</a></li>
+                <a href="CartPage.html"><img src="file:///D:/WS%20Code/WS%20Images/Cart Icon.png" alt="Cart" class="cart-icon"></a>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="cart-container">
+        <table class="cart-table">
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+            </tr>
+            <tr>
+                <td><img src="images/ArvinContillo.jpg" alt="Black Keyboard"> LCD Monitor</td>
+                <td>₱650</td>
+                <td><input type="number" class="quantity-input" value="1" min="1"></td>
+                <td>₱650</td>
+            </tr>
+            <tr>
+                <td><img src="images/ArbieSuarez.jpg" alt="Webcam"> Case</td>
+                <td>₱550</td>
+                <td><input type="number" class="quantity-input" value="2" min="1"></td>
+                <td>₱1100</td>
+            </tr>
+        </table>
+
+        <div class="cart-actions">
+            <button class="return-btn">Return to Shop</button>
+            <button class="update-btn">Update Cart</button>
+        </div>
+
+        <div class="cart-total">
+            <h3>Cart Total</h3>
+            <div><span>Subtotal:</span> <span>₱1750</span></div>
+            <div><span>Shipping:</span> <span>Free</span></div>
+            <div><span>Total:</span> <span>₱1750</span></div>
+            <button>Proceed to checkout</button>
+        </div>
+    </div>
+</body>
+</html>
