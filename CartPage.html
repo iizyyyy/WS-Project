@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Racing Sans One' rel='stylesheet'>
     <link href="styles.css" rel="stylesheet">
-    <title>Contact Page | Build-A-PC</title>
+    <title>Cart Page | Build-A-PC</title>
+</head
     </head>
 </head>
 <body>
     <header>
         <nav>
             <div class="logo">
-                <a href="SignUp.html"><img src="https://github.com/iizyyyy/WS-Project/blob/main/images/Logo.jpg?raw=true" alt="Build-A-PC Logo"></a>
+                <a href="SignUp.html"><img src="https://raw.githubusercontent.com/iizyyyy/WS-Project/main/images/Logo.jpg" alt="Build-A-PC Logo"></a>
             </div>
 
             <ul class="nav-links">
@@ -27,24 +28,22 @@
 
     <div class="cart-container">
         <table class="cart-table">
-            <tr>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
-            </tr>
-            <tr>
-                <td><img src="images/ArvinContillo.jpg" alt="Black Keyboard"> LCD Monitor</td>
-                <td>₱650</td>
-                <td><input type="number" class="quantity-input" value="1" min="1"></td>
-                <td>₱650</td>
-            </tr>
-            <tr>
-                <td><img src="images/ArbieSuarez.jpg" alt="Webcam"> Case</td>
-                <td>₱550</td>
-                <td><input type="number" class="quantity-input" value="2" min="1"></td>
-                <td>₱1100</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="cart-body">
+                <tr class="empty-cart">
+                    <td colspan="5" style="text-align: center; font-style: italic; color: gray;">
+                        No items in the cart
+                    </td>
+                </tr>
+            </tbody>
         </table>
 
         <div class="cart-actions">
@@ -54,11 +53,122 @@
 
         <div class="cart-total">
             <h3>Cart Total</h3>
-            <div><span>Subtotal:</span> <span>₱1750</span></div>
+            <div><span>Subtotal:</span> <span> </span></div>
             <div><span>Shipping:</span> <span>Free</span></div>
-            <div><span>Total:</span> <span>₱1750</span></div>
+            <div><span>Total:</span> <span> </span></div>
             <button>Proceed to checkout</button>
         </div>
     </div>
-</body>
+
+        <script>
+            function loadCart() {
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                let cartTable = document.querySelector(".cart-table");
+                let subtotal = 0;
+        
+                cartTable.innerHTML = `
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                        <th>Action</th>
+                    </tr>
+                `;
+                
+                cart.forEach((item, index) => {
+                    let itemSubtotal = item.price * item.quantity;
+                    subtotal += itemSubtotal;
+        
+                    let row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td><img src="${item.image1}" alt="${item.name}" width="50"> ${item.name}</td>
+                        <td>₱${item.price}</td>
+                        <td><input type="number" class="quantity-input" value="${item.quantity}" min="1" data-index="${index}"></td>
+                        <td class="subtotal">₱${itemSubtotal}</td>
+                        <td><button class="remove-btn update-btn" data-index="${index}">Remove</button></td>
+                    `;
+                    cartTable.appendChild(row);
+                });
+        
+                let total = subtotal; // In case you want to add shipping later, modify here
+        
+                document.querySelector(".cart-total span:nth-child(2)").textContent = `₱${subtotal}`;
+                document.querySelector(".cart-total div:nth-child(3) span:nth-child(2)").textContent = `₱${subtotal}`;
+                document.querySelector(".cart-total div:nth-child(4) span:nth-child(2)").textContent = `₱${total}`;
+        
+                document.querySelectorAll(".quantity-input").forEach(input => {
+                    input.addEventListener("change", updateCart);
+                });
+        
+                document.querySelectorAll(".remove-btn").forEach(button => {
+                    button.addEventListener("click", removeItem);
+                });
+            }
+        
+            function updateCart() {
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                let inputs = document.querySelectorAll(".quantity-input");
+        
+                inputs.forEach(input => {
+                    let index = input.getAttribute("data-index");
+                    cart[index].quantity = parseInt(input.value);
+                });
+        
+                localStorage.setItem("cart", JSON.stringify(cart));
+                loadCart();
+            }
+        
+            function removeItem(event) {
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                let index = event.target.getAttribute("data-index");
+        
+                cart.splice(index, 1);
+                localStorage.setItem("cart", JSON.stringify(cart));
+                loadCart();
+            }
+        
+            function proceedToCheckout() {
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        
+                if (cart.length === 0) {
+                    alert("Error: Your cart is empty! Add items before proceeding to checkout.");
+                    return; 
+                }
+        
+                localStorage.setItem("checkoutCart", JSON.stringify(cart));
+        
+                setTimeout(() => {
+                    alert("Checkout successful! Redirecting to Shop Page...");
+                    window.location.href = "ShopPage.html";
+                }, 500);
+            }
+        
+            function addToCart(name, price, image1) {
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                let existingItem = cart.find(item => item.name === name);
+        
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({ name, price, image1, quantity: 1 });
+                }
+        
+                localStorage.setItem("cart", JSON.stringify(cart));
+                alert(`${name} added to cart!`);
+            }
+        
+            document.addEventListener("DOMContentLoaded", function () {
+                document.querySelector(".return-btn").addEventListener("click", function () {
+                    window.location.href = "ShopPage.html";
+                });
+        
+                document.querySelector(".update-btn").addEventListener("click", updateCart);
+                document.querySelector(".cart-total button").addEventListener("click", proceedToCheckout);
+        
+                loadCart();
+            });
+        </script>
+
+    </body>
 </html>

@@ -336,16 +336,17 @@ hr {
     height: 1px;
     background-color: #ddd;
 }
-
 /* Cart Table Styling */
 .cart-table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 .cart-table th, .cart-table td {
-    padding: 12px;;
+    padding: 12px;
     border-bottom: 1px solid #ddd;
+    text-align: center;
 }
 
 .cart-table th {
@@ -355,6 +356,14 @@ hr {
 
 .cart-table td {
     padding: 20px; /* Adds spacing inside table cells */
+}
+
+.cart-table td:nth-child(1) {
+    width: 400px; 
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    vertical-align: middle;
 }
 
 .cart-table img {
@@ -479,4 +488,68 @@ hr {
     .cart-total {
         width: 100%;
     }
+}
+
+.cart-table th, .cart-table td {
+    text-align: center;
+    padding: 12px;
+}
+
+.cart-item-img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.remove-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.remove-btn:hover {
+    background-color: #cc0000;
+}
+
+.cart-total {
+    width: 300px;
+    padding: 15px;
+    background: #f8f8f8;
+    text-align: center;
+    border: 2px solid black;
+    position: absolute;
+    right: 10%;
+    font-size: 14px;
+}
+
+.update-btn, .return-btn {
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.update-btn {
+    background-color: #4071aa;
+    color: white;
+}
+
+.update-btn:hover {
+    background-color: #305a88;
+}
+
+.return-btn {
+    background-color: #ddd;
+    color: black;
+}
+
+.return-btn:hover {
+    background-color: #bbb;
 }

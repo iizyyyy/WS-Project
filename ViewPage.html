@@ -11,7 +11,7 @@
     <header>
         <nav>
             <div class="logo">
-                <a href="SignUp.html"><img src="https://github.com/iizyyyy/WS-Project/blob/main/images/Logo.jpg?raw=true" alt="Build-A-PC Logo"></a>
+                <a href="SignUp.html"><img src="https://raw.githubusercontent.com/iizyyyy/WS-Project/main/images/Logo.jpg" alt="Build-A-PC Logo"></a>
             </div>
             
             <ul class="nav-links">
@@ -42,50 +42,81 @@
             <p id="product-desc"></p>
 
             <div class="buttons">
-                <button>Add to Cart</button>
-                <button>Buy Now</button>
+                <button id="add-to-cart">Add to Cart</button>
+                <button id="buy-now">Buy Now</button>
             </div>
         </div>
     </div>
 
-        <script>
-            // Function to extract parameters from the URL
-            function getQueryParams() {
-                const params = new URLSearchParams(window.location.search);
-                return {
-                    name: params.get("name"),
-                    price: params.get("price"),
-                    image1: params.get("image1"),
-                    image2: params.get("image2"),
-                    image3: params.get("image3"),
-                    image4: params.get("image4"),
-                    desc: params.get("desc")
-                };
-            }
-
-            // Load product details dynamically on page load
-            window.onload = function () {
-                const product = getQueryParams();
-                if (product.name) {
-                    document.getElementById("product-name").textContent = decodeURIComponent(product.name);
-                    document.getElementById("product-price").textContent = "" + product.price;
-                    document.getElementById("product-desc").innerHTML = decodeURIComponent(product.desc).replace(/\n/g, "<br>");
-
-                    // Set main and additional images
-                    document.getElementById("product-image").src = product.image1;
-                    document.getElementById("thumb1").src = product.image2;
-                    document.getElementById("thumb2").src = product.image3;
-                    document.getElementById("thumb3").src = product.image4;
-
-                    // Add click event to thumbnails
-                    document.querySelectorAll('.thumbnail').forEach(thumbnail => {
-                        thumbnail.addEventListener('click', function() {
-                            document.getElementById("product-image").src = this.src;
-                        });
-                    });
-                }
+    <script>
+        // Function to extract parameters from the URL
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                name: params.get("name"),
+                price: parseFloat(params.get("price")), // Ensure price is a number
+                image1: params.get("image1"),
+                image2: params.get("image2"),
+                image3: params.get("image3"),
+                image4: params.get("image4"),
+                desc: params.get("desc")
             };
-        </script>
+        }
+    
+        // Load product details dynamically on page load
+        window.onload = function () {
+            const product = getQueryParams();
+            if (product.name) {
+                document.getElementById("product-name").textContent = decodeURIComponent(product.name);
+                document.getElementById("product-price").textContent = " " + product.price.toFixed(2);
+    
+                // Set and format description with justified text
+                const productDesc = document.getElementById("product-desc");
+                productDesc.innerHTML = decodeURIComponent(product.desc).replace(/\n/g, "<br>");
+                productDesc.style.textAlign = "justify";
+    
+                // Set main and additional images
+                document.getElementById("product-image").src = product.image1;
+                document.getElementById("thumb1").src = product.image2;
+                document.getElementById("thumb2").src = product.image3;
+                document.getElementById("thumb3").src = product.image4;
+    
+                // Add click event to thumbnails
+                document.querySelectorAll('.thumbnail').forEach(thumbnail => {
+                    thumbnail.addEventListener('click', function() {
+                        document.getElementById("product-image").src = this.src;
+                    });
+                });
+    
+                // Attach event listeners for buttons
+                document.getElementById("add-to-cart").addEventListener("click", function() {
+                    addToCart(product);
+                });
+    
+                document.getElementById("buy-now").addEventListener("click", function() {
+                    addToCart(product);
+                    window.location.href = "CartPage.html"; // Redirect to cart after buying
+                });
+            }
+        };
+    
+        // Function to add product to cart
+        function addToCart(product) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || []; // Get existing cart or empty array
+    
+            // Check if the product is already in the cart
+            let existingProduct = cart.find(item => item.name === product.name);
+            if (existingProduct) {
+                existingProduct.quantity += 1; // Increase quantity if product exists
+            } else {
+                product.quantity = 1; // Ensure new items start at quantity 1
+                cart.push(product); // Add new product
+            }
+    
+            localStorage.setItem("cart", JSON.stringify(cart)); // Save cart back to storage
+            alert("Product added to cart!"); // Notify user
+        }
+    </script>    
 
     </body>
 </html>
