@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+            }
+
+            body {
+                background-color: white;
+                color: black;
+                overflow-x: hidden;
+            }
+
+            header {
+                background-color: black;
+                padding: 10px 20px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .logo img {
+                width: 90px;
+                height: 90px;
+                margin-left: 70px;
+                border-radius: 100%;
+            }
+
+            nav {
+                display: flex;
+                font-size: 15px;
+                align-items: stretch;
+            }
+
+            .nav-links {
+                list-style: none;
+                display: flex;
+                align-items: center;
+                justify-content: end;
+                gap: 20px;
+                position: absolute;
+                right: 2%;
+                top: 10%;
+            }
+
+            .nav-links a {
+                color: white;
+                text-decoration: none;
+                font-size: 12px;
+            }
+
+            .nav-links a:hover {
+                text-decoration: underline;
+            }
+
+            nav .nav-links li a {
+                font-size: 20px !important;
+            }
+
+            .cart-icon {
+                width: 20px;
+                height: 20px;
+                filter: invert(1);
+            }
+
+            .checkout-container {
+                display: flex;
+                justify-content: space-between;
+                max-width: 70%;
+                margin: 10px auto;
+                padding: 20px;
+                gap: 10%;
+            }
+
+            .billing-details, .order-summary {
+                flex: 1;
+
+            }
+
+            .billing-details h2 {
+                margin-bottom: 20px;
+                border-color: #000;
+            }
+
+
+            .billing-details input {
+                width: 100%;
+                padding: 8px;
+                margin: 8px 0;
+                border: 1px solid black;
+                border-radius: 5px;
+                font-size: 14px;
+            }
+
+            .order-summary {
+                width: 100%;
+                max-width: 400px;
+                background: white;
+                padding: 20px;
+                font-family: Arial, sans-serif;
+            }
+
+            .order-item {
+                display: flex;
+                align-items: center; /* Pantay ang image at text */
+                justify-content: space-between; /* Para yung price nasa kanan */
+                gap: 10px; /* Space sa pagitan ng image at text */
+                margin-bottom: 15px; /* Para may space bawat item */
+            }
+
+            .order-item img {
+                width: 60px; /* Fixed size */
+                height: auto;
+                object-fit: contain; /* Para hindi distorted */
+            }
+
+            .order-item .item-info {
+                flex-grow: 1; /* Para sumakop ng space */
+                font-size: 16px; /* Lagyan ng size para readable */
+            }
+
+            .order-item .item-price {
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            .totals div {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px ;
+                font-size: 16px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .totals div:last-child {
+                border-bottom: none;
+            }
+
+            .payment-method {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 16px;
+                margin-top: 15px;
+            }
+
+            .place-order-btn {
+                background-color: black;
+                color: white;
+                padding: 12px 24px;  /* Adjust para di sobrang laki */
+                border: none;
+                border-radius: 8px; /* Para sa smooth corners */
+                font-size: 16px;
+                cursor: pointer;
+                display: inline-block; /* Para hindi full width */
+                margin: 20px 0; /* No auto margin, align sa left */
+                width: fit-content; /* Para sakto lang sa text */
+            }
+
+
+            .place-order-btn:hover {
+                background-color: #333; /* Lighter black on hover */
+            }
+
+        @media (max-width: 768px) {
+            .billing-details, .order-summary {
+                width: 100%;
+                float: none;
+            }
+
+            .order-summary {
+                border-left: none;
+                padding-left: 0;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="SignUp.html"><img src="https://raw.githubusercontent.com/iizyyyy/WS-Project/main/images/Logo.jpg" alt="Build-A-PC Logo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="ShopPage.html">Shop</a></li>
+                <li><a href="AboutUs.html">About</a></li>
+                <li><a href="ContactUs.html">Contact</a></li>
+                <a href="CartPage.html"><img src="https://raw.githubusercontent.com/iizyyyy/WS-Project/main/images/Cart Icon.png" alt="Cart" class="cart-icon"></a>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="checkout-container">
+        <div class="billing-details">
+            <h2>Billing Details</h2>
+            <label>First Name*</label>
+            <input type="text" placeholder="">
+    
+            <label>Street Address*</label>
+            <input type="text" placeholder="">
+    
+            <label>Town/City*</label>
+            <input type="text" placeholder="">
+    
+            <label>Phone Number*</label>
+            <input type="text" placeholder="">
+    
+            <label>Email Address*</label>
+            <input type="email" placeholder="">
+        </div>
+    
+        <div class="order-summary">
+            <h3>Order Summary</h3>
+            <div class="order-items"></div>
+            
+            <div class="totals">
+                <div><span>Subtotal:</span><span>₱0</span></div>
+                <div><span>Shipping:</span><span>Free</span></div>
+                <div><span>Total:</span><span>₱0</span></div>
+            </div>
+        
+            <div class="payment-method">
+                <input type="radio" checked>
+                <label>Cash on delivery</label>
+            </div>
+        
+            <button class="place-order-btn">Place Order</button>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                loadOrderSummary();
+        
+                document.querySelector(".place-order-btn").addEventListener("click", function () {
+                    if (validateBillingDetails()) {
+                        alert("Order placed successfully!");
+                        localStorage.removeItem("cart"); // Clear cart after successful order
+                        window.location.href = "ShopPage.html"; // Redirect to homepage or confirmation page
+                    }
+                });
+            });
+        
+            function validateBillingDetails() {
+                let inputs = document.querySelectorAll(".billing-details input");
+                for (let input of inputs) {
+                    if (input.value.trim() === "") {
+                        alert("Error: Please fill in all required fields.");
+                        return false;
+                    }
+                }
+                return true;
+            }
+        
+            function loadOrderSummary() {
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                let orderSummary = document.querySelector(".order-summary");
+                let itemsContainer = orderSummary.querySelector(".order-items");
+                let subtotal = 0;
+        
+                itemsContainer.innerHTML = ""; // Clear existing items
+        
+                cart.forEach(item => {
+                    let itemSubtotal = item.price * item.quantity;
+                    subtotal += itemSubtotal;
+        
+                    let orderItem = document.createElement("div");
+                    orderItem.classList.add("order-item");
+                    orderItem.innerHTML = `
+                        <img src="${item.image1}" alt="${item.name}">
+                        <span class="item-info">${item.name} (x${item.quantity})</span>
+                        <span class="item-price">₱${itemSubtotal}</span>
+                    `;
+                    itemsContainer.appendChild(orderItem);
+                });
+        
+                document.querySelector(".totals div:nth-child(1) span:nth-child(2)").textContent = `₱${subtotal}`;
+                document.querySelector(".totals div:nth-child(3) span:nth-child(2)").textContent = `₱${subtotal}`;
+            }
+        </script>
+
+    </body>
+</html>

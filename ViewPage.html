@@ -19,7 +19,7 @@
                 <li><a href="ShopPage.html#categories">Shop</a></li>
                 <li><a href="AboutUs.html">About</a></li>
                 <li><a href="ContactUs.html">Contact</a></li>
-                <a href="CartPage.html"><img src="https://github.com/iizyyyy/WS-Project/blob/main/images/Cart Icon.png?raw=true" alt="Cart" class="cart-icon"></a>
+                <a href="CartPage.html"><img src="https://raw.githubusercontent.com/iizyyyy/WS-Project/main/images/Cart Icon.png" alt="Cart" class="cart-icon"></a>
             </ul>
         </nav>
     </header>
@@ -95,7 +95,12 @@
         
                     document.getElementById("buy-now").addEventListener("click", function() {
                         addToCart(product);
-                        window.location.href = "CartPage.html"; // Redirect to cart after buying
+                        let confirmBuy = confirm("✅ Product added to cart! Proceed to checkout?");
+                    if (confirmBuy) {
+                            window.location.href = "BillingPage.html"; // Redirect to billing page after buying
+                        } else {
+                            alert("You can continue shopping!"); // Notify user if they choose not to proceed
+                        }
                     });
                 }
             };

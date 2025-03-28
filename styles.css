@@ -456,7 +456,7 @@ hr {
     border-color: #aaa; /* Darker gray border on hover */
 }
 
-.return-btn, .update-btn {
+.return-btn {
     padding: 10px;
     border: none;
     cursor: pointer;
@@ -467,11 +467,6 @@ hr {
 .return-btn {
     background-color: #ddd;
     color: black;
-}
-
-.update-btn {
-    background-color: #4071aa;
-    color: white;
 }
 
 /* Responsive */
