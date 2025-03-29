@@ -7,7 +7,7 @@
 
 body {
     background-color: white;
-    overflow-x: hidden;
+    margin-bottom: 80px;
 }
 
 h1 {
@@ -21,6 +21,45 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.website-h1 {
+    font-size: 20px;
+}
+
+.website-p {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 20px;
+    text-align: center;
+    gap: 20px;
+    max-width: 80%;
+    margin: 5%;
+}
+
+.website-p left-section img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.scroll-down {
+    text-align: center;
+    margin-top: -130px;
+}
+
+.scroll-down img {
+    width: 50px; /* Adjust size */
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.scroll-down img:hover {
+    transform: translateY(5px); /* Moves the arrow down slightly when hovered */
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 .logo img {
@@ -118,7 +157,7 @@ header {
 .carousel__slide {
     flex: 1 0 100%;
     display: flex;
-    overflow: hidden;
+
 }
 
 .carousel__slide img {
