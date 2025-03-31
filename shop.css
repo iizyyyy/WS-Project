@@ -165,7 +165,7 @@ nav .nav-links li a {
     justify-content: center;
     grid-template-columns: repeat(2, minmax(390px, 1fr));
     gap: 80px;
-    column-gap: 20%;
+    column-gap: 10%;
     padding: 50px;
     padding-left: 200px;
     padding-right: 200px;
@@ -175,7 +175,7 @@ nav .nav-links li a {
     display: block;
     text-decoration: none;
     color: inherit;
-    border: 1px solid #ddd;
+    border: 2px solid black;
     border-radius: 10px;
     cursor: pointer;
     text-align: center;
