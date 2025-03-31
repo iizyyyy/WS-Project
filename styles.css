@@ -345,10 +345,12 @@ header {
     margin: 10px 
     0;
 }
+
 .buttons {
     margin: 15px 0;
 
 }
+
 .buttons button {
     background-color: black;
     color: white;
