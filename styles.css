@@ -316,13 +316,12 @@ header {
 
 .product-info h1 {
     font-size: 32px;
-    font-weight: bold;  
+    font-weight: bold;
 }
 
 .price {
     font-size: 24px;
-    margin: 10px 
-    0;
+    margin: 10px;
 }
 
 .buttons {
